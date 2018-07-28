@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="renderer" content="webkit">
+    <title>记账管理</title>
+    <!--[if lt IE 9]>
+    <meta http-equiv="refresh" content="0;ie.html" />
+    <![endif]-->
+    <link rel="shortcut icon" href="favicon.ico">
+    <link href="../resource/css/bootstrap.min.css?v=3.3.6" rel="stylesheet">
+    <link href="../resource/css/font-awesome.min.css?v=4.4.0" rel="stylesheet">
+    <link href="../resource/css/animate.css" rel="stylesheet">
+    <link href="../resource/css/style.css?v=4.1.0" rel="stylesheet">
+    <link href="../resource/theme/css/account.css?v=4.1.0" rel="stylesheet">
+</head>
+
+<body class="fixed-sidebar full-height" style="overflow:hidden">
+    <div id="wrapper">
+        <nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0">
+            <ul class="nav navbar-top-links navbar-right">
+                <li>
+                    <a class="dropdown-toggle right-sidebar-toggle exit" data-toggle="dropdown" href="javascript:void (0)">
+                        <i class="fa fa-user-md"></i> 系统管理
+                    </a>
+                </li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle right-sidebar-toggle exit" data-toggle="dropdown" href="javascript:void (0)">
+                        <i class="fa fa-user"></i> 个人中心
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-right">
+                        <li>
+                            <a href="userinfo.html" class="J_menuItem">
+                                <div>个人资料</div>
+                            </a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="password.html" class="J_menuItem">
+                                <div>密码修改</div>
+                            </a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="profile.html" class="J_menuItem">
+                                <div>安全退出</div>
+                            </a>
+                        </li>
+
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+        <!--左侧导航开始-->
+        <nav class="navbar-default navbar-static-side" role="navigation">
+            <div class="nav-close"><i class="fa fa-times-circle"></i>
+            </div>
+            <div class="sidebar-collapse">
+                <ul class="nav" id="side-menu">
+                    <li>
+                        <a href="home.html" class="J_menuItem" data-index="0">
+                            <i class="fa fa-home"></i>
+                            <span class="nav-label">我的桌面</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="home.html" class="J_menuItem" data-index="0">
+                            <i class="fa fa-home"></i>
+                            <span class="nav-label">我的账单</span>
+                        </a>
+                    </li>
+                    #set($rootMenu = $!sysMenuData.get("sys$!defaultSysType"))
+                    #if("$!rootMenu.children" != "")
+	                    #foreach($root in $!rootMenu.children)
+		                    <li>
+		                        <a href="javascript:void(0);">
+		                            <i class="fa fa-h-square"></i> <span class="nav-label">$!root.text</span>
+		                            <span class="fa arrow fa-angle-right"></span>
+		                        </a>
+		                        #if("$!root.children" != "")
+			                        <ul class="nav nav-second-level">
+			                        	#foreach($child in $!root.children)
+				                            <li>
+				                                <a class="J_menuItem" href="$!child.href" data-index="$!child.id">$!child.text</a>
+				                            </li>
+			                            #end
+			                        </ul>
+		                        #end
+		                    </li>
+	                    #end
+                    #end
+                </ul>
+            </div>
+        </nav>
+        <!--左侧导航结束-->
+        <!--右侧部分开始-->
+        <div id="page-wrapper" class="dashbard-1">
+            <div class="row content-tabs">
+                <button class="roll-nav roll-left J_tabLeft navbar-minimalize"><i class="fa fa-step-backward"></i>
+                </button>
+                <button class="roll-nav roll-left J_tabLeft" style="margin-left: 40px;"><i class="fa fa-backward"></i>
+                </button>
+                <nav class="page-tabs J_menuTabs">
+                    <div class="page-tabs-content">
+                        <a href="javascript:void(0);" class="active J_menuTab" data-id="zszx/xzk_fc.html">我的桌面</a>
+                    </div>
+                </nav>
+                <button class="roll-nav roll-right J_tabRight"><i class="fa fa-forward"></i>
+                </button>
+                <div class="btn-group roll-nav roll-right">
+                    <button class="dropdown J_tabClose" data-toggle="dropdown">关闭操作<span class="caret"></span>
+                    </button>
+                    <ul role="menu" class="dropdown-menu dropdown-menu-right">
+                        <li class="J_tabShowActive"><a>定位当前选项卡</a></li>
+                        <li class="divider"></li>
+                        <li class="J_tabCloseAll"><a>关闭全部选项卡</a></li>
+                        <li class="J_tabCloseOther"><a>关闭其他选项卡</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row J_mainContent" id="content-main">
+                <iframe class="J_iframe" name="iframe0" width="100%" height="99.6%" src="" frameborder="0" data-id="zszx/xzk_fc.html" seamless></iframe>
+            </div>
+        </div>
+        <!--右侧部分结束-->
+    </div>
+
+    <!-- 全局js -->
+    <script src="../resource/js/jquery.min.js?v=2.1.4"></script>
+    <script src="../resource/js/bootstrap.min.js?v=3.3.6"></script>
+    <script src="../resource/js/plugins/metisMenu/jquery.metisMenu.js"></script>
+    <script src="../resource/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+
+    <!-- 自定义js -->
+    <script src="../resource/js/hplus.js?v=4.1.0"></script>
+    <script src="../resource/js/contabs.js"></script>
+    <script src="../resource/js/plugins/pace/pace.min.js"></script><!-- 加载进度 -->
+
+
+</body>
+
+</html>

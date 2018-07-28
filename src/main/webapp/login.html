@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>云PACS系统</title>
+<link href="resource/style/login/login.css" type="text/css" rel="stylesheet">
+<script src="resource/js/jquery/jquery.min.js"></script>
+<script type="text/javascript">
+function doSubmit() {
+    window.location.href = "../common/main.do";
+    return;
+
+    var form = document.loginForm;
+    if (form['imgbtn']) {
+        form['imgbtn'].disabled = true;
+    }
+    if (form && form['account'] && form['password']) {
+        if (form['account'].value == "") {
+            alert("请输入用户名！");
+            form['account'].focus();
+        } else if (form['password'].value == "") {
+            alert("请输入密码！");
+            form['password'].focus();
+        } else {
+        	$.post(
+				'login.action', 
+				{account: form['account'].value, password: form['password'].value},
+				function (result){
+          			var json = $.parseJSON(result);
+          			if (json.isLogin) {
+          				window.location.href = json.url;
+          			} else {
+          				alert(json.msg);
+          			}
+          		}, 
+          		"text"
+        	);
+        }
+    }
+    return false;
+}
+
+if(window.parent != window){
+	window.parent.location.reload(true);
+}
+
+//监听回车
+document.onkeydown=function(event){
+    var e = event || window.event || arguments.callee.caller.arguments[0];          
+     if(e && e.keyCode == 13){
+    	 doSubmit();
+    }
+}; 
+</script>
+</head>
+<body>
+    <div class="banner">
+        <div class="top_left" style="background: url(resource/style/login/images/logo.png) no-repeat left center;"></div>
+        <div class="top_right" style="background: url(resource/style/login/images/unit.png) no-repeat right center;"></div>
+    </div>
+    <div class="wrapper">
+        <div class="form_table">
+            <form name="loginForm" method="post" action="common/main.do">
+                <input name="username" type="text" class="txt" maxlength="20" placeholder="请输入登录账号" value="" />
+                <input name="password" type="password" class="pass" maxlength="20" placeholder="请输入密码" value="" />
+                <input type="submit" class="btn" value=" 登 录 " />
+            </form>
+            <div class="help">
+<!--                 <a href="javascript:void(0);" class="reg">用户注册</a>
+                <a href="javascript:void(0);" class="password">忘记密码</a> -->
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        Copyright &copy; 2018
+    </div>
+</body>
+</html>

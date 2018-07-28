@@ -1,0 +1,17 @@
+html, body { margin: 0; padding: 0; width: 100%; height: 100%; font: normal 100 12pt/100% "Microsoft YaHei","Heiti"; }
+body { background: url(images/bg.jpg) repeat-x #f2f2f2;}
+.banner { width: 1000px; margin: 0 auto; height: 108px; }
+.banner .top_left { width: 45%; float: left; background: url("images/logo.png") no-repeat left center; height: 108px; margin-left: 10%}
+.banner .top_right { width: 30%; float: right; background: url("images/unit.png") no-repeat right center;  height: 108px; margin-right: 9% }
+
+.wrapper { background: url("images/table-bg.jpg") no-repeat; width: 1079px; height: 399px; margin: 0 auto }
+
+.form_table { width: 250px; height: 225px; float: right; margin: 120px 174px 0 0;}
+.form_table input.txt, .form_table input.pass{ border: #ededed 1px solid; width: 88%; background: #f1f1f1; padding: 4% 6%; margin-bottom: 18px; border-radius: 3px}
+.form_table input.btn{ border: 0; width: 100%; background: #42C253; margin-bottom: 18px; border-radius: 3px; color: #fff; font-weight: 500; font-size: 13pt; height: 37px; line-height: 37px;}
+.form_table .help{ padding-top: 10px;}
+.form_table a.reg { color: #42C253; text-decoration: none; float: left}
+.form_table a.password { color: #c8c8c8; text-decoration: none; float: right}
+
+
+.footer { width: 1079px; margin: 33px auto; text-align: center; color: #777; font-size: 14px;}
